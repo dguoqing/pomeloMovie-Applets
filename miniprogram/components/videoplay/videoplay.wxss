@@ -1,0 +1,10 @@
+/* components/videoplay/videoplay.wxss */
+.video-play{
+  height: 100%;
+  width: 100%;
+  padding: 0 20rpx;
+}
+.video-play video{
+  height: 100%;
+  width: 100%;
+}

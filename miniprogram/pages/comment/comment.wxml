@@ -1,0 +1,79 @@
+<!--pages/comment/comment.wxml-->
+<view>
+  <view class="detail-container" style="background:url({{movieDetail.images.large}}) no-repeat top/cover">
+  </view>
+  <view class="detail-mask"></view>
+  <view class="detail-info">
+    <image src="{{movieDetail.images.large}}" class="detail-img"></image>
+    <view class="detail">
+      <view>{{movieDetail.title}}</view>
+      <view class="detail-nm">{{movieDetail.originl_title}}</view>
+      <view class="detail-sc">{{movieDetail.rating.average}}分</view>
+      <view>{{movieDetail.countries[0]}} / {{movieDetail.durations[0]}}</view>
+      <view>导演：{{movieDetail.directors[0].name}}</view>
+      <view>
+        <text>类型：</text>
+        <text wx:for="{{movieDetail.genres}}" wx:for-item="genres" wx:for-index="genreskey" wx:key="genreskey">{{genres}} </text>
+      </view>
+    </view>
+  </view>
+  <view class="desc">{{movieDetail.summary}}</view>
+
+  <!-- 预览 -->
+  <!-- <view class="preview-movie"  wx:for="{{movieDetail.clips}}" wx:for-item="clips" wx:for-index="clipskey" wx:key="clipskey" >
+    <videoplay videoUrl="{{clips.resource_url}}" vPoster="{{clips.small}}"></videoplay>
+  </view> -->
+  <video id="myVideo" src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400"  enable-danmu danmu-btn controls></video>
+  <!-- 评价 -->
+  <view class="comment-container">
+    <van-field value="{{ content }}" placeholder="写一些评价吧" bind:change="onContentChange" />
+    <van-rate value="{{ score }}" bind:change="scoreChange" />
+    <van-button type="warning" bindtap="uploadImg">上传图片</van-button>
+    <view class="comment-image">
+      <image class="comment-image" wx:for='{{imagesPaths}}' src="{{item}}" wx:key="index"></image>
+    </view>
+    <van-button size="large" type="danger" bindtap="submit">提交评价</van-button>
+  </view>
+  <view>
+    <!-- 电影评价 -->
+    <view class="movie-assess">
+      <text class="assess-title">电影评价</text>
+      <view class="assess-header">
+        <view class="assess-total">
+          <text>用户评价({{assessList.length}})</text>
+          <text>97.2%满意</text>
+        </view>
+        <view class="filter-btn">
+          <van-radio-group value="{{ radio }}" bind:change="filterBtn">
+            <van-radio name="1">全部</van-radio>
+            <van-radio name="2">好评</van-radio>
+          </van-radio-group>
+        </view>
+      </view>
+
+      <view class="assess-body">
+        <view wx:if="{{assessList.length > 0}}">
+          <view wx:for="{{assessList}}" wx:for-index="idx" wx:key="idx" class="assess-content">
+            <view>
+              <view class="con-top">
+                <text>{{item.content}}</text>
+                <van-rate value="{{ item.score }}" disabled size='10' />
+              </view>
+              <view class="comment-image con-middle">
+                <image wx:for='{{item.fileIDs}}' wx:for-item="filePath" src="{{filePath}}" wx:key="index"></image>
+              </view>
+            </view>
+            <view class="con-bottom">
+              <view>{{item.nickName}}</view>
+              <view>{{item.dueStr}}</view>
+            </view>
+          </view>
+        </view>
+
+        <view wx:else>
+          暂无评价
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

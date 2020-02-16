@@ -1,0 +1,33 @@
+<!--pages/movie/movie.wxml-->
+<view class="movie" wx:for="{{movies}}" wx:for-index="idx" wx:key="idx">
+  <view class="movie-img-box">
+    <image class="movie-img" src="{{item.images.small}}"></image>
+  </view>
+  <view class="movie-info">
+    <view class="movie-title">{{item.title}}</view>
+
+    <view>
+      <text class="movie-info-text">观众评分：</text>
+      <text class="movie-score">{{item.rating.average}} 分</text>
+    </view>
+
+    <view>
+      <text class="movie-info-text">导演：</text>
+      <text wx:for="{{item.directors}}" wx:for-item="directors" wx:for-index="dirIndex" wx:key="dirIndex">{{directors.name}} </text>
+    </view>
+
+    <view>
+      <text class="movie-info-text">主演：</text>
+      <text wx:for="{{item.casts}}" wx:key="index">{{item.name}} </text>
+    </view>
+
+    <view>
+      <text class="movie-info-text">上映时间：</text>
+      <text wx:for="{{item.pubdates}}" wx:for-item="pubdates" wx:for-index="pubdateskey" wx:key="pubdateskey">{{pubdates}}</text>
+    </view>
+  </view>
+  
+  <view class="movie-comment-box"> 
+  <button data-movieid="{{item.id}}" bindtap="gotoComment" class="movie-comment">评价</button>
+  </view>
+</view>

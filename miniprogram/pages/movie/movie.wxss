@@ -1,0 +1,47 @@
+/* pages/movie/movie.wxss */
+.movie{
+  height: auto;
+  display: flex;
+  padding: 10rpx;
+  border-bottom: 1px solid #ccc;
+}
+.movie-img-box{
+  height: 300rpx
+}
+.movie-img{
+  width: 200rpx;
+  height: 100%;
+  margin-right: 20rpx;
+}
+.movie-info{
+  flex: 1;
+  font-size: 30rpx
+}
+.movie-info view text{
+  line-height: 46rpx
+}
+.movie-title{
+  color: #666;
+  font-size: 36rpx;
+  font-weight: bolder
+}
+.movie-score{
+  color: #FAAf00;
+}
+.movie-comment-box{
+  position: relative;
+  height: 100%;
+  width: 122rpx;
+}
+.movie-comment{
+  height: 60rpx;
+  background: #E54847;
+  color: #fff;
+  font-size: 26rpx;
+  position: absolute;
+  right: 5rpx;
+  bottom: 20rpx
+}
+.movie-info-text{
+  color: #666
+}

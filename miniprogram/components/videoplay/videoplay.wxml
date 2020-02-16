@@ -1,0 +1,4 @@
+<!--components/videoplay/videoplay.wxml-->
+<view class="video-play">
+   <video id="myVideo" src="http://vt1.doubanio.com/202002161118/16db0845991310b55dc0187980f60513/view/movie/M/302470051.mp4"></video>
+</view>
